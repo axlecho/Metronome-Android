@@ -65,7 +65,7 @@ public class AboutActivity extends AestheticActivity implements ThemesView.OnThe
         View glide = findViewById(R.id.glide);
         librariesView = findViewById(R.id.libraries);
 
-        setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
