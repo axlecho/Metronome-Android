@@ -47,10 +47,9 @@ import james.metronome.views.AppIconView;
 import james.metronome.views.EmphasisSwitch;
 import james.metronome.views.MetronomeView;
 import james.metronome.views.SeekBar;
-import james.metronome.views.ThemesView;
 import james.metronome.views.TicksView;
 
-public class MainActivity extends AestheticActivity implements TicksView.OnTickChangedListener, ServiceConnection, MetronomeService.TickListener, EmphasisSwitch.OnCheckedChangeListener, SeekBar.OnProgressChangeListener {
+public class MetronomeActivity extends AestheticActivity implements TicksView.OnTickChangedListener, ServiceConnection, MetronomeService.TickListener, EmphasisSwitch.OnCheckedChangeListener, SeekBar.OnProgressChangeListener {
 
     private static final String PREF_BOOKMARKS_LENGTH = "bookmarksLength";
     private static final String PREF_BOOKMARK = "bookmark";
@@ -92,7 +91,7 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_metronome);
         metronome = (Metronome) getApplicationContext();
 
         // if (Aesthetic.isFirstTime())
@@ -152,7 +151,7 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
         aboutView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                startActivity(new Intent(MetronomeActivity.this, AboutActivity.class));
             }
         });
 
@@ -344,7 +343,7 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
                                 if (view.getTag() != null && view.getTag() instanceof Integer) {
                                     final int bpm = (Integer) view.getTag();
 
-                                    new AlertDialog.Builder(MainActivity.this)
+                                    new AlertDialog.Builder(MetronomeActivity.this)
                                             .setTitle(R.string.title_add_shortcut)
                                             .setMessage(R.string.msg_add_shortcut)
                                             .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -663,9 +662,9 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
 
     private class SplashThread extends Thread {
 
-        private WeakReference<MainActivity> activityReference;
+        private WeakReference<MetronomeActivity> activityReference;
 
-        public SplashThread(MainActivity activity) {
+        public SplashThread(MetronomeActivity activity) {
             activityReference = new WeakReference<>(activity);
         }
 
@@ -680,7 +679,7 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 @Override
                 public void run() {
-                    MainActivity activity = activityReference.get();
+                    MetronomeActivity activity = activityReference.get();
                     if (activity != null)
                         activity.findViewById(R.id.icon).setVisibility(View.GONE);
                 }
