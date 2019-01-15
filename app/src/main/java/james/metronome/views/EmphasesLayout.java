@@ -2,13 +2,14 @@ package james.metronome.views;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
+
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import androidx.core.view.GravityCompat;
 import james.metronome.utils.ConversionUtils;
 
 public class EmphasesLayout extends LinearLayout {

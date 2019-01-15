@@ -2,8 +2,9 @@ package james.metronome.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
+
+import androidx.appcompat.app.AppCompatActivity;
 import james.metronome.services.MetronomeService;
 
 public class DummyShortcutActivity extends AppCompatActivity {

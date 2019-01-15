@@ -8,16 +8,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.afollestad.aesthetic.Aesthetic;
 import com.afollestad.aesthetic.AestheticActivity;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -179,8 +179,6 @@ public class AboutActivity extends AestheticActivity implements ThemesView.OnThe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (metronome != null && requestCode == Metronome.REQUEST_PURCHASE)
-            metronome.onPremiumBought(resultCode, data);
     }
 
     @Override
@@ -195,7 +193,6 @@ public class AboutActivity extends AestheticActivity implements ThemesView.OnThe
 
     @Override
     public void onThemeChanged(int theme) {
-        metronome.onPremium(this);
         prefs.edit().putInt(PREF_THEME, theme).apply();
     }
 }

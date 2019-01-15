@@ -17,7 +17,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +34,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import androidx.appcompat.app.AlertDialog;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -94,10 +94,9 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         metronome = (Metronome) getApplicationContext();
-        metronome.onCreateActivity();
 
-        if (Aesthetic.isFirstTime())
-            ThemesView.themes[0].apply(this);
+        // if (Aesthetic.isFirstTime())
+        //   ThemesView.themes[0].apply(this);
 
         appIcon = findViewById(R.id.appIcon);
         metronomeView = findViewById(R.id.metronome);
@@ -165,7 +164,6 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
                     if (bookmarks.contains(bpm))
                         removeBookmark(bpm);
                     else {
-                        metronome.onPremium(MainActivity.this);
                         addBookmark(bpm);
                     }
                 }
@@ -571,13 +569,6 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
     }
 
     @Override
-    protected void onDestroy() {
-        if (metronome != null)
-            metronome.onDestroyActivity();
-        super.onDestroy();
-    }
-
-    @Override
     public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
         MetronomeService.LocalBinder binder = (MetronomeService.LocalBinder) iBinder;
         service = binder.getService();
@@ -669,12 +660,6 @@ public class MainActivity extends AestheticActivity implements TicksView.OnTickC
             service.setBpm(progress);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (metronome != null && requestCode == Metronome.REQUEST_PURCHASE)
-            metronome.onPremiumBought(resultCode, data);
-    }
 
     private class SplashThread extends Thread {
 
