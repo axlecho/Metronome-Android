@@ -21,7 +21,6 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import james.metronome.Metronome;
 import james.metronome.R;
 import james.metronome.views.AppIconView;
 import james.metronome.views.ThemesView;
@@ -41,13 +40,11 @@ public class AboutActivity extends AestheticActivity implements ThemesView.OnThe
     private Disposable textColorPrimarySubscription;
 
     private SharedPreferences prefs;
-    private Metronome metronome;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        metronome = (Metronome) getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         toolbar = findViewById(R.id.toolbar);

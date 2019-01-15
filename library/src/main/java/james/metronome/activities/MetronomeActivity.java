@@ -38,7 +38,6 @@ import androidx.appcompat.app.AlertDialog;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import james.metronome.Metronome;
 import james.metronome.R;
 import james.metronome.services.MetronomeService;
 import james.metronome.utils.ConversionUtils;
@@ -86,13 +85,10 @@ public class MetronomeActivity extends AestheticActivity implements TicksView.On
     private long prevTouchInterval;
     private long prevTouchTime;
 
-    private Metronome metronome;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metronome);
-        metronome = (Metronome) getApplicationContext();
 
         // if (Aesthetic.isFirstTime())
         //   ThemesView.themes[0].apply(this);
