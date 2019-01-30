@@ -1,8 +1,10 @@
 package james.metronome.data;
 
 import android.content.Context;
-import android.support.annotation.ColorRes;
-import android.support.annotation.StringRes;
+
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
 import com.afollestad.aesthetic.Aesthetic;

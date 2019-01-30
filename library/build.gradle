@@ -4,7 +4,8 @@ android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 15
         versionName "1.7"
@@ -27,11 +28,11 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.afollestad:aesthetic:1.0.0-beta05'
-    implementation 'com.github.bumptech.glide:glide:4.1.1'
     testCompile 'junit:junit:4.12'
+    implementation 'androidx.annotation:annotation:1.0.1'
 }

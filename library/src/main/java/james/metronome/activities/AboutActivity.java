@@ -7,13 +7,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
+
 import android.view.MenuItem;
 import android.view.View;
 
 import com.afollestad.aesthetic.Aesthetic;
 import com.afollestad.aesthetic.AestheticActivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -61,11 +62,11 @@ public class AboutActivity extends AestheticActivity implements ThemesView.OnThe
         View dialogs = findViewById(R.id.dialogs);
         View glide = findViewById(R.id.glide);
         librariesView = findViewById(R.id.libraries);
-
         // setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
 
         themesView.setTheme(prefs.getInt(PREF_THEME, 0));
         themesView.setListener(this);

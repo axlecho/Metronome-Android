@@ -1,7 +1,8 @@
 package james.metronome.utils;
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
+
+import androidx.annotation.ColorInt;
 
 public class ColorUtils {
 
