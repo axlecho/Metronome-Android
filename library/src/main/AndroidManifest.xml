@@ -3,10 +3,17 @@
     package="james.metronome">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <application>
-        <activity android:name=".activities.MetronomeActivity" />
 
-        <activity android:name=".activities.AboutActivity" />
+    <application>
+        <activity
+            android:name=".activities.MetronomeActivity"
+            android:hardwareAccelerated="true"
+            android:theme="@style/MetronomeTheme"/>
+
+        <activity
+            android:name=".activities.AboutActivity"
+            android:label="@string/title_about"
+            android:theme="@style/MetronomeTheme"/>
 
         <activity android:name=".activities.DummyShortcutActivity">
             <intent-filter>
